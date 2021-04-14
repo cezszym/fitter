@@ -1,16 +1,19 @@
 import React from 'react';
+import Post from '../Post/Post';
+import styles from './PostsList.module.scss';
 
 class PostsList extends React.Component {
   render() {
     return (
-      <div>
-        <h2>Lista postów</h2>
-        <ul>
+      <div className={styles.listWrapper}>
+        <ul className={styles.postsList}>
           {this.props.list.map((e, index) => (
-            <li key={index}>
-              <p>{e.date ? e.date.toDate().toDateString() : 'no date'}</p>
-              <p>{e.content ? e.content : 'no content'}</p>
-            </li>
+            <Post
+              date={e.data.date}
+              content={e.data.content}
+              id={e.id}
+              key={index}
+            />
           ))}
         </ul>
       </div>

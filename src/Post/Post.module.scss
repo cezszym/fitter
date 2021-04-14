@@ -1,0 +1,53 @@
+.wrapper {
+  width: 60%;
+  margin: 30px 0;
+  background-color: #fffff0;
+  border-radius: 8px;
+}
+
+.post {
+  padding: 10px 20px;
+}
+
+.content {
+  margin: 30px 0;
+  font-size: 1.8rem;
+  color: #41b883;
+}
+
+.comments {
+  border-top: 2px solid #34495e;
+  padding: 10px 20px;
+}
+.label {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.comment {
+  padding: 20px 0;
+  border-bottom: 1px solid #41b883;
+}
+
+.commentInput {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #41b883;
+  margin: 20px 0;
+  padding: 10px 5px;
+  outline: none;
+}
+
+.form {
+  button {
+    border-radius: 8px !important;
+  }
+}
+@media (max-width: 700px) {
+  .wrapper {
+    width: 100%;
+    margin: 15px 0;
+  }
+  .content {
+    font-size: 1.5rem;
+  }
+}

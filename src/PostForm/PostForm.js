@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../Firebase/Firebase';
+import styles from './PostForm.module.scss';
 
 class PostForm extends React.Component {
   constructor() {
@@ -31,17 +32,22 @@ class PostForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.addPost}>
-        <textarea
-          onChange={this.updateInput}
-          type="text"
-          name="content"
-          rows="10"
-          placeholder="Pochwal się swoją aktywnością ..."
-          value={this.state.content}
-        />
-        <button type="submit">Dodaj fitta !</button>
-      </form>
+      <div className={styles.wrapper}>
+        <form onSubmit={this.addPost} className={styles.form}>
+          <textarea
+            className={styles.contentTextarea}
+            onChange={this.updateInput}
+            type="text"
+            name="content"
+            rows="10"
+            placeholder="Pochwal się swoją aktywnością ..."
+            value={this.state.content}
+          />
+          <button className="baseButton" type="submit">
+            Dodaj fitta !
+          </button>
+        </form>
+      </div>
     );
   }
 }

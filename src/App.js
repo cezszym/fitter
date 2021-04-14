@@ -1,7 +1,13 @@
 import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faRunning } from '@fortawesome/free-solid-svg-icons';
 import PostForm from './PostForm/PostForm';
 import PostsList from './PostsList/PostsList';
 import firebase from 'firebase';
+import Header from './Header/Header';
+
+library.add(fas, faRunning);
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +23,7 @@ class App extends React.Component {
     const response = await postsRef.orderBy('date', 'desc').get();
     const posts = [];
     response.forEach((doc) => {
-      posts.push(doc.data());
+      posts.push({ id: doc.id, data: doc.data() });
     });
     this.setState({ list: posts });
   };
@@ -29,9 +35,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="pageWrapper">
-        <header>
-          <h1>Fitter</h1>
-        </header>
+        <Header />
         <PostForm refresh={this.fetchPosts} />
         <PostsList list={this.state.list} />
       </div>
