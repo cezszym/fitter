@@ -94,6 +94,7 @@ class Post extends React.Component {
                 name="newComment"
                 placeholder="Napisz komentarz ..."
                 value={this.state.newComment}
+                required
               />
               <button className="baseButton" type="submit">
                 Dodaj komentarz

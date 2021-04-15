@@ -42,6 +42,7 @@ class PostForm extends React.Component {
             rows="10"
             placeholder="Pochwal się swoją aktywnością ..."
             value={this.state.content}
+            required
           />
           <button className="baseButton" type="submit">
             Dodaj fitta !

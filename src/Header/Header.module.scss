@@ -1,16 +1,96 @@
 .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 40px;
   margin-bottom: 30px;
   border-bottom: 4px solid #41b883;
+  color: #41b883;
 }
 
-h1 {
+.pageTitle {
   font-size: 3rem;
   font-weight: 900;
-  color: #41b883;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .icon {
   font-size: 3.5rem;
   margin-right: 10px;
+}
+
+.loginButton {
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  background-color: #41b883;
+  color: #433d3c;
+  font-size: 1.1rem;
+  font-weight: 900;
+  transition: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: none;
+  &:hover {
+    background-color: #433d3c;
+    color: #41b883;
+  }
+}
+
+.loginModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #433d3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visible {
+  opacity: 1;
+  transition: 0.4s;
+  transform: scale(1);
+}
+
+.hidden {
+  opacity: 0;
+  transition: 0.4s;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+.closeButton {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  padding: 0;
+  font-size: 3rem;
+  color: #41b883;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .userInfo {
+    align-items: center;
+    padding-top: 20px;
+    border-top: 4px solid #41b883;
+    text-align: center;
+  }
 }

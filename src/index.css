@@ -76,3 +76,63 @@ button {
   background-color: #433d3c;
   color: #41b883;
 }
+
+.authContainer button:hover {
+  background-color: #fffff0;
+  color: #41b883;
+}
+
+/* Style dla autentykacji */
+
+.authContainer {
+  color: #fffff0;
+  font-size: 1.2rem;
+  max-width: 80%;
+  text-align: center;
+}
+
+.authContainer input {
+  padding: 10px 5px;
+  margin: 10px 0;
+  outline: none;
+  border-radius: 8px;
+  border: 0;
+  margin: 10px;
+}
+
+.authContainer button {
+  padding: 10px;
+  border: none;
+  background-color: #41b883;
+  color: #433d3c;
+  font-size: 1.1rem;
+  font-weight: 900;
+  transition: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: none;
+  margin: 10px 10px 10px 0;
+}
+
+.firebaseui-card-header {
+  font-size: 1.5rem;
+}
+
+.firebaseui-idp-text-short {
+  display: none;
+}
+
+.firebaseui-relative-wrapper,
+.firebaseui-card-content {
+  margin: 20px 0;
+}
+
+@media (max-width: 1000px) {
+  .authContainer {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+  .firebaseui-card-header {
+    font-size: 1.3rem;
+  }
+}
