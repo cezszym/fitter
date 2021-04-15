@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import * as firebaseui from 'firebaseui/dist/npm__pl';
+var firebaseui = require('firebaseui');
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDVif7bF3L4aCVpkq62gcAfnhCusfn3BQM',
