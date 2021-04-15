@@ -11,8 +11,10 @@ class PostsList extends React.Component {
             <Post
               date={e.data.date}
               content={e.data.content}
+              author={e.data.authorName}
               id={e.id}
               key={index}
+              user={this.props.user}
             />
           ))}
         </ul>

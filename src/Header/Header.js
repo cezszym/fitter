@@ -12,7 +12,6 @@ class Header extends React.Component {
   }
 
   logout = () => {
-    console.log('ddop');
     firebase
       .auth()
       .signOut()
@@ -42,17 +41,17 @@ class Header extends React.Component {
           </h1>
           <div className={styles.userInfo}>
             {this.props.user ? (
-              <p>Zalogowano jako {this.props.user.displayName}</p>
+              <p>Logged as {this.props.user.displayName}</p>
             ) : (
-              <p>Aby dodawać posty i komentarze musisz się zalogować</p>
+              <p>To post fitts and comment you have to login</p>
             )}
             {this.props.user ? (
               <button className={styles.loginButton} onClick={this.logout}>
-                Wyloguj
+                Logout
               </button>
             ) : (
               <button className={styles.loginButton} onClick={this.toggleModal}>
-                Zaloguj się
+                Login
               </button>
             )}
           </div>

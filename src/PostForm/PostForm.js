@@ -26,6 +26,8 @@ class PostForm extends React.Component {
     const postsRef = db.collection('wpisy').add({
       content: this.state.content,
       date: now,
+      authorName: this.props.user.displayName,
+      authorMail: this.props.user.email,
     });
     this.props.refresh();
   };
@@ -40,12 +42,12 @@ class PostForm extends React.Component {
             type="text"
             name="content"
             rows="10"
-            placeholder="Pochwal się swoją aktywnością ..."
+            placeholder="Tell others about your activity ..."
             value={this.state.content}
             required
           />
           <button className="baseButton" type="submit">
-            Dodaj fitta !
+            Add new fitt !
           </button>
         </form>
       </div>

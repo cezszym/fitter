@@ -9,15 +9,30 @@
   padding: 10px 20px;
 }
 
+.date {
+  color: #41b883;
+  background: #433d3c;
+  width: fit-content;
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+
 .content {
   margin: 30px 0;
   font-size: 1.8rem;
   color: #41b883;
 }
 
+.commentAuthor {
+  font-size: 0.8rem;
+  color: #41b883;
+  margin-top: 15px;
+}
+
 .comments {
-  border-top: 2px solid #34495e;
-  padding: 10px 20px;
+  border-top: 1px solid #41b883;
+  padding: 40px 20px;
 }
 .label {
   font-size: 1.3rem;
@@ -35,6 +50,7 @@
   margin: 20px 0;
   padding: 10px 5px;
   outline: none;
+  background: #fffff0;
 }
 
 .form {
@@ -44,7 +60,7 @@
 }
 @media (max-width: 700px) {
   .wrapper {
-    width: 100%;
+    width: calc(100% - 20px);
     margin: 15px 0;
   }
   .content {

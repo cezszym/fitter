@@ -3,12 +3,13 @@ import styles from './Post.module.scss';
 import firebase from 'firebase';
 
 class Post extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       comments: [],
       commentsOpened: false,
       newComment: '',
+      currentUser: props.user,
     };
   }
 
@@ -39,6 +40,7 @@ class Post extends React.Component {
       .collection('komentarze')
       .add({
         content: this.state.newComment,
+        author: this.props.user.displayName,
         date: now,
       });
     this.fetchComments();
@@ -54,52 +56,59 @@ class Post extends React.Component {
     return (
       <li className={styles.wrapper}>
         <div className={styles.post}>
-          <p>
+          <p className={styles.date}>
             {this.props.date
               ? this.props.date.toDate().toDateString()
               : 'no date'}
           </p>
+          {this.props.author ? this.props.author + ' said:' : 'No user'}
           <p className={styles.content}>
             {this.props.content ? this.props.content : 'no content'}
           </p>
         </div>
         {!this.state.commentsOpened && (
           <button onClick={this.fetchComments} className="baseButton">
-            Zobacz komentarze
+            Show comments
           </button>
         )}
         {this.state.commentsOpened && (
           <div className={styles.comments}>
-            <p className={styles.label}>Komentarze:</p>
+            <p className={styles.label}>Comments</p>
             <ul>
               {this.state.comments.length ? (
                 this.state.comments.map((c, index) => (
                   <li key={index}>
+                    {c.author && (
+                      <p className={styles.commentAuthor}>
+                        {' '}
+                        {c.author} commented:
+                      </p>
+                    )}
                     <p className={styles.comment}>{c.content}</p>
                   </li>
                 ))
               ) : (
                 <li>
-                  <p className={styles.comment}>
-                    Bądź pierwszą osobą która skomentuje
-                  </p>
+                  <p className={styles.comment}>Be first person to comment</p>
                 </li>
               )}
             </ul>
-            <form onSubmit={this.addComment} className={styles.form}>
-              <input
-                className={styles.commentInput}
-                onChange={this.updateInput}
-                type="text"
-                name="newComment"
-                placeholder="Napisz komentarz ..."
-                value={this.state.newComment}
-                required
-              />
-              <button className="baseButton" type="submit">
-                Dodaj komentarz
-              </button>
-            </form>
+            {this.props.user && (
+              <form onSubmit={this.addComment} className={styles.form}>
+                <input
+                  className={styles.commentInput}
+                  onChange={this.updateInput}
+                  type="text"
+                  name="newComment"
+                  placeholder="Type your comment ..."
+                  value={this.state.newComment}
+                  required
+                />
+                <button className="baseButton" type="submit">
+                  Add comment
+                </button>
+              </form>
+            )}
           </div>
         )}
       </li>

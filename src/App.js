@@ -48,8 +48,10 @@ class App extends React.Component {
     return (
       <div className="pageWrapper">
         <Header user={this.state.user} />
-        {this.state.user && <PostForm refresh={this.fetchPosts} />}
-        <PostsList list={this.state.list} />
+        {this.state.user && (
+          <PostForm user={this.state.user} refresh={this.fetchPosts} />
+        )}
+        <PostsList user={this.state.user} list={this.state.list} />
       </div>
     );
   }
