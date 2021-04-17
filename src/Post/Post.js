@@ -58,6 +58,11 @@ class Post extends React.Component {
     });
   };
 
+  copyText = () => {
+    navigator.clipboard.writeText(this.props.content);
+    alert('Fitt was copied');
+  };
+
   render() {
     return (
       <li className={styles.wrapper}>
@@ -82,13 +87,7 @@ class Post extends React.Component {
             {this.props.content ? this.props.content : 'no content'}
           </p>
         </div>
-        <div
-          onClick={() => {
-            navigator.clipboard.writeText(this.props.content);
-            alert('Fitt copied to clickboard');
-          }}
-          className={styles.copyIcon}
-        >
+        <div onClick={this.copyText} className={styles.copyIcon}>
           <FontAwesomeIcon className={styles.icon} icon={['fas', 'copy']} />
         </div>
         {!this.state.commentsOpened && (
