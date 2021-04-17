@@ -59,7 +59,9 @@ class Post extends React.Component {
   };
 
   copyText = () => {
-    navigator.clipboard.writeText(this.props.content);
+    navigator.clipboard.writeText(this.props.content).then(() => {
+      alert('Successfuly copied to clipboard');
+    });
   };
 
   render() {
