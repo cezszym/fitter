@@ -60,7 +60,6 @@ class Post extends React.Component {
 
   copyText = () => {
     navigator.clipboard.writeText(this.props.content);
-    alert('Fitt was copied');
   };
 
   render() {
