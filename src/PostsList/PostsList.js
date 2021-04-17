@@ -1,8 +1,18 @@
 import React from 'react';
 import Post from '../Post/Post';
 import styles from './PostsList.module.scss';
+import firebase from 'firebase';
 
 class PostsList extends React.Component {
+  deletePost = async (id) => {
+    const db = firebase.firestore();
+    const res = await db
+      .collection('wpisy')
+      .doc(this.props.list[0].id)
+      .delete();
+    this.props.refresh();
+  };
+
   render() {
     return (
       <div className={styles.listWrapper}>
@@ -12,9 +22,13 @@ class PostsList extends React.Component {
               date={e.data.date}
               content={e.data.content}
               author={e.data.authorName}
+              authorMail={e.data.authorMail}
+              localization={e.data.localization}
               id={e.id}
               key={index}
-              user={this.props.user}
+              userMail={this.props.userMail}
+              displayName={this.props.displayName}
+              deletePost={this.deletePost}
             />
           ))}
         </ul>

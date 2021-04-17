@@ -41,7 +41,7 @@ class Header extends React.Component {
           </h1>
           <div className={styles.userInfo}>
             {this.props.user ? (
-              <p>Logged as {this.props.user.displayName}</p>
+              <p>Logged as {this.props.user}</p>
             ) : (
               <p>To post fitts and comment you have to login</p>
             )}

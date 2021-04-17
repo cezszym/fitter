@@ -1,13 +1,18 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faRunning, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faRunning,
+  faTimes,
+  faMapMarkerAlt,
+  faCopy,
+} from '@fortawesome/free-solid-svg-icons';
 import PostForm from './PostForm/PostForm';
 import PostsList from './PostsList/PostsList';
 import firebase from 'firebase';
 import Header from './Header/Header';
 
-library.add(fas, faRunning, faTimes);
+library.add(fas, faRunning, faTimes, faMapMarkerAlt, faCopy);
 
 class App extends React.Component {
   constructor() {
@@ -47,11 +52,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="pageWrapper">
-        <Header user={this.state.user} />
+        <Header user={this.state.user ? this.state.user.displayName : null} />
         {this.state.user && (
-          <PostForm user={this.state.user} refresh={this.fetchPosts} />
+          <PostForm
+            displayName={this.state.user ? this.state.user.displayName : null}
+            email={this.state.user ? this.state.user.email : null}
+            refresh={this.fetchPosts}
+          />
         )}
-        <PostsList user={this.state.user} list={this.state.list} />
+        <PostsList
+          displayName={this.state.user ? this.state.user.displayName : null}
+          userMail={this.state.user ? this.state.user.email : null}
+          list={this.state.list}
+          refresh={this.fetchPosts}
+        />
       </div>
     );
   }

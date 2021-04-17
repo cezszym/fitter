@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Post.module.scss';
 import firebase from 'firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Post extends React.Component {
   constructor(props) {
@@ -9,9 +10,14 @@ class Post extends React.Component {
       comments: [],
       commentsOpened: false,
       newComment: '',
-      currentUser: props.user,
     };
   }
+
+  delete = () => {
+    if (window.confirm('Are you sure you want to delete this fitt?')) {
+      this.props.deletePost(this.props.id);
+    }
+  };
 
   fetchComments = async () => {
     const db = firebase.firestore();
@@ -40,7 +46,7 @@ class Post extends React.Component {
       .collection('komentarze')
       .add({
         content: this.state.newComment,
-        author: this.props.user.displayName,
+        author: this.props.displayName,
         date: now,
       });
     this.fetchComments();
@@ -56,15 +62,34 @@ class Post extends React.Component {
     return (
       <li className={styles.wrapper}>
         <div className={styles.post}>
-          <p className={styles.date}>
-            {this.props.date
-              ? this.props.date.toDate().toDateString()
-              : 'no date'}
-          </p>
+          {this.props.authorMail === this.props.userMail && (
+            <div className={styles.deleteBtn}>
+              <p onClick={this.delete}>Delete</p>
+            </div>
+          )}
+          <div className={styles.additionalInfo}>
+            <p>
+              {this.props.date
+                ? this.props.date.toDate().toDateString()
+                : 'no date'}
+            </p>
+            {this.props.localization && (
+              <p className={styles.localization}>{this.props.localization}</p>
+            )}
+          </div>
           {this.props.author ? this.props.author + ' said:' : 'No user'}
           <p className={styles.content}>
             {this.props.content ? this.props.content : 'no content'}
           </p>
+        </div>
+        <div
+          onClick={() => {
+            navigator.clipboard.writeText(this.props.content);
+            alert('Fitt copied to clickboard');
+          }}
+          className={styles.copyIcon}
+        >
+          <FontAwesomeIcon className={styles.icon} icon={['fas', 'copy']} />
         </div>
         {!this.state.commentsOpened && (
           <button onClick={this.fetchComments} className="baseButton">
@@ -93,7 +118,7 @@ class Post extends React.Component {
                 </li>
               )}
             </ul>
-            {this.props.user && (
+            {this.props.userMail && (
               <form onSubmit={this.addComment} className={styles.form}>
                 <input
                   className={styles.commentInput}

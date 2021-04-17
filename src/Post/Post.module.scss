@@ -9,13 +9,22 @@
   padding: 10px 20px;
 }
 
-.date {
+.additionalInfo {
+  display: flex;
   color: #41b883;
   background: #433d3c;
   width: fit-content;
   border-radius: 8px;
-  padding: 3px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  font-size: 0.75rem;
+}
+
+.localization {
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left: 1px solid #41b883;
 }
 
 .content {
@@ -28,6 +37,21 @@
   font-size: 0.8rem;
   color: #41b883;
   margin-top: 15px;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: flex-end;
+  p {
+    color: #fffff0;
+    font-size: 0.8rem;
+    margin: 15px 0 0 0;
+    background: #fb3640;
+    padding: 5px 20px;
+    width: fit-content;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 }
 
 .comments {
@@ -43,6 +67,16 @@
   border-bottom: 1px solid #41b883;
 }
 
+.copyIcon {
+  text-align: end;
+  font-size: 2rem;
+  margin: 0 30px 20px 0;
+  color: #433d3c;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.4s;
+}
+
 .commentInput {
   width: 100%;
   border-radius: 8px;
@@ -56,6 +90,12 @@
 .form {
   button {
     border-radius: 8px !important;
+  }
+}
+@media (min-width: 1000px) {
+  .copyIcon:hover {
+    color: #41b883;
+    transition: 0.4s;
   }
 }
 @media (max-width: 700px) {
