@@ -8,3 +8,7 @@
 - 2 funkcje html mobile api - clipboard i lokalizacja
 - usuwanie postów
 - PWA
+
+## Linki:
+
+- https://fitter.vercel.app/
