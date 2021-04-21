@@ -8,7 +8,7 @@ class PostsList extends React.Component {
     const db = firebase.firestore();
     const res = await db
       .collection('wpisy')
-      .doc(this.props.list[0].id)
+      .doc(id)
       .delete();
     this.props.refresh();
   };
