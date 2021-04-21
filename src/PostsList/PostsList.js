@@ -25,7 +25,7 @@ class PostsList extends React.Component {
               authorMail={e.data.authorMail}
               localization={e.data.localization}
               id={e.id}
-              key={index}
+              key={e.id}
               userMail={this.props.userMail}
               displayName={this.props.displayName}
               deletePost={this.deletePost}

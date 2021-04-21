@@ -36,9 +36,6 @@ class App extends React.Component {
     });
   };
 
-  sayUser = () => {
-    console.log(this.state.user);
-  };
 
   componentDidMount() {
     this.fetchPosts();
